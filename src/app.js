@@ -4,6 +4,9 @@ const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
+// we have to deploy our app to heroku. Heroku can use any port so we use process.env.PORT
+const port = process.env.PORT || 3000
+
 const app = express()
 
 // index.html is automatically detected by node thats why we don't have to explicitly provide the index.html filename in app.use method
@@ -99,7 +102,7 @@ app.get('*', (req,res) =>
     res.send('404 page')
 })
 
-app.listen(3000, () =>
+app.listen(port, () =>
 {
-    console.log("Server is running on port 3000.")
+    console.log("Server is running on port " + port)
 })
